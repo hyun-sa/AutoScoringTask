@@ -1,0 +1,3 @@
+Put all inputs here to make output
+Output directories will made by each file names.
+Ex) input/test.c -> output/test/result_1, result_2 ...
