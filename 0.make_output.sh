@@ -20,13 +20,14 @@ do
   if [ -f "$file_path" ]
   then
     file_name=$(basename "$file_path")
+    rm -rf "./output/${file_name%.*}"
     mkdir -p "./output/${file_name%.*}"
     
     if [[ $1 == "C" ]]; then
       $compile_command "./output/${file_name%.*}/${file_name%.*}" "$file_path"
     fi
     
-    for i in {1..50}
+    for i in {1..2000}
     do
       if [[ $1 == "C" ]]; then
         echo "$i" | "./output/${file_name%.*}/${file_name%.*}" > "./output/${file_name%.*}/result_$i.txt"
