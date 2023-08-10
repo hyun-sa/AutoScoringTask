@@ -3,6 +3,7 @@ import os
 
 def compare_results(case_name, total_cases):
     answer = 0
+    error_cases = []
 
     for i in range(1, total_cases + 1):
         result_file = f'./output/{case_name}/result_{i}.txt'
@@ -14,9 +15,11 @@ def compare_results(case_name, total_cases):
 
             if result_content == answer_content:
                 answer += 1
+            else:
+                error_cases.append(i)
 
     percentage = (answer / total_cases) * 100
-    summary = f"{answer} / {total_cases}\n{percentage:.2f}%\n"
+    summary = f"{answer} / {total_cases}\n{percentage:.2f}%\nerror cases : {*error_cases}\n"
 
     with open(f'./result/{case_name}.txt', 'w') as result_file:
         result_file.write(summary)
